@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>СБ-платформа услуг в сфере охраны труда, промышленной, пожарной и экологической безопасности</title>
+    <title>СБ – платформа услуг безопасности</title>
     <style>
         :root {
-            --primary: #1565c0;
-            --primary-dark: #0d47a1;
-            --primary-light: #e3f2fd;
-            --accent: #ff6f00;
+            --accent: #1565c0;
+            --accent-light: #e3f2fd;
+            --accent-dark: #0d47a1;
             --bg: #f5f7fa;
-            --surface: #ffffff;
+            --card: #ffffff;
             --text: #212121;
             --text-secondary: #616161;
             --border: #e0e0e0;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
             --radius: 12px;
-            --radius-sm: 8px;
-            --transition: 0.2s ease;
-            --max-width: 1280px;
-            --header-height: 64px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
             --cat-ot: #1565c0;
-            --cat-ot-light: #e3f2fd;
             --cat-pb: #37474f;
-            --cat-pb-light: #eceff1;
             --cat-fire: #c62828;
-            --cat-fire-light: #ffebee;
             --cat-eco: #2e7d32;
-            --cat-eco-light: #e8f5e9;
         }
 
         * {
@@ -48,342 +39,437 @@
             flex-direction: column;
         }
 
-        /* ========== HEADER ========== */
+        /* Шапка */
         .header {
-            background: var(--surface);
+            background: #fff;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
-            min-height: var(--header-height);
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
         .header-inner {
-            max-width: var(--max-width);
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 8px 16px;
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
         }
         .logo {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            white-space: nowrap;
+            gap: 10px;
         }
         .logo-icon {
+            background: var(--accent);
+            color: #fff;
             width: 36px;
             height: 36px;
-            background: var(--primary);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
             font-weight: 900;
-            font-size: 1rem;
-            flex-shrink: 0;
+            font-size: 1.1rem;
         }
-
-        /* Навигация десктоп */
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .header-nav a,
-        .header-nav span {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            padding: 6px 10px;
-            border-radius: var(--radius-sm);
-            transition: var(--transition);
-            white-space: nowrap;
-            cursor: pointer;
-        }
-        .header-nav a:hover,
-        .header-nav a.active {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-
-        /* Бургер-меню для мобильных */
         .burger {
             display: none;
             flex-direction: column;
             gap: 4px;
             cursor: pointer;
             padding: 10px;
-            border-radius: var(--radius-sm);
             border: none;
             background: none;
         }
         .burger span {
             display: block;
-            width: 25px;
+            width: 24px;
             height: 3px;
             background: var(--text);
             border-radius: 2px;
-            transition: var(--transition);
+            transition: 0.2s;
         }
-        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .burger.active span:nth-child(2) { opacity: 0; }
-        .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .desktop-nav a,
+        .desktop-nav span {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            background: var(--accent-light);
+            color: var(--accent);
+        }
         .mobile-nav {
             display: none;
             flex-direction: column;
-            background: var(--surface);
+            background: #fff;
             padding: 8px 16px;
             border-top: 1px solid var(--border);
         }
         .mobile-nav a,
         .mobile-nav span {
-            padding: 12px 8px;
-            font-size: 1rem;
+            padding: 14px 8px;
             border-bottom: 1px solid var(--border);
             text-decoration: none;
             color: var(--text);
+            font-size: 1rem;
             display: block;
             cursor: pointer;
         }
-        .mobile-nav a:last-child { border-bottom: none; }
-
-        @media (max-width: 768px) {
-            .header-nav { display: none; }
-            .burger { display: flex; }
-            .mobile-nav.active { display: flex; }
-            .header-inner { justify-content: space-between; }
+        .mobile-nav a:last-child {
+            border-bottom: none;
         }
 
-        /* ========== КНОПКИ ========== */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            .burger {
+                display: flex;
+            }
+            .mobile-nav.active {
+                display: flex;
+            }
+        }
+
+        /* Кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
             padding: 10px 18px;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             border: none;
-            transition: var(--transition);
+            transition: 0.2s;
             text-decoration: none;
             white-space: nowrap;
             touch-action: manipulation;
         }
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-primary:hover { background: var(--primary-dark); }
-        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
-        .btn-outline:hover { background: var(--primary-light); }
-        .btn-sm { padding: 6px 14px; font-size: 0.8rem; }
-        .btn-accent { background: var(--accent); color: #fff; }
-        .btn-accent:hover { background: #e65100; }
-        .badge {
-            display: inline-block;
+        .btn-primary {
             background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent-light);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.8rem;
+        }
+        .badge {
+            background: #ff6f00;
             color: #fff;
             font-size: 0.7rem;
             font-weight: 700;
             padding: 2px 8px;
             border-radius: 12px;
-            min-width: 20px;
+            min-width: 22px;
             text-align: center;
+            line-height: 1.4;
         }
 
-        /* ========== MAIN ========== */
         .main {
             flex: 1;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 20px 16px;
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
         }
-        .page { display: none; }
-        .page.active { display: block; }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
 
-        /* Монитор */
-        .monitor {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
+        /* Монитор (крупнее) */
+        .monitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
         .monitor-card {
-            flex: 1 1 180px;
-            background: var(--surface);
+            background: var(--card);
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 20px 16px;
             box-shadow: var(--shadow);
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-left: 5px solid var(--primary);
+            gap: 16px;
+            border-left: 5px solid var(--accent);
         }
-        .monitor-card .num { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
-        .monitor-card .label { color: var(--text-secondary); font-size: 0.85rem; }
+        .monitor-card .num {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .monitor-card .label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
 
-        /* Поисковая панель */
         .hero {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
             border-radius: var(--radius);
-            padding: 24px 16px;
-            margin-bottom: 20px;
+            padding: 28px 20px;
+            margin-bottom: 24px;
             text-align: center;
         }
-        .hero h1 { font-size: 1.5rem; font-weight: 700; }
-        .hero p { color: var(--text-secondary); margin: 10px 0; }
-        .hero .search-row {
+        .hero h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .search-row {
             display: flex;
             gap: 8px;
             max-width: 500px;
-            margin: 0 auto;
+            margin: 16px auto 0;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .hero input[type="text"] {
+        .search-row input {
             flex: 1 1 200px;
-            padding: 12px;
+            padding: 12px 16px;
             border: 2px solid var(--border);
             border-radius: 8px;
             font-size: 0.95rem;
             outline: none;
-            min-width: 0;
+            background: #fff;
         }
-        .hero input:focus { border-color: var(--primary); }
+        .search-row input:focus {
+            border-color: var(--accent);
+        }
 
-        /* Фильтры */
         .filters {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 16px;
+            gap: 10px;
             align-items: center;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
         .filter-chip {
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
             border: 2px solid var(--border);
             background: #fff;
             cursor: pointer;
             font-size: 0.82rem;
-            transition: var(--transition);
+            transition: 0.2s;
             white-space: nowrap;
             user-select: none;
         }
-        .filter-chip.active { color: #fff; border-color: transparent; }
-        .filter-chip[data-cat="all"].active { background: var(--primary); }
-        .filter-chip[data-cat="ot"].active { background: var(--cat-ot); }
-        .filter-chip[data-cat="pb"].active { background: var(--cat-pb); }
-        .filter-chip[data-cat="fire"].active { background: var(--cat-fire); }
-        .filter-chip[data-cat="eco"].active { background: var(--cat-eco); }
-        .filter-price input {
-            width: 80px;
-            padding: 8px;
+        .filter-chip.active {
+            color: #fff;
+            border-color: transparent;
+        }
+        .filter-chip[data-cat="all"].active {
+            background: var(--accent);
+        }
+        .filter-chip[data-cat="ot"].active {
+            background: var(--cat-ot);
+        }
+        .filter-chip[data-cat="pb"].active {
+            background: var(--cat-pb);
+        }
+        .filter-chip[data-cat="fire"].active {
+            background: var(--cat-fire);
+        }
+        .filter-chip[data-cat="eco"].active {
+            background: var(--cat-eco);
+        }
+        .filter-select,
+        .filter-input {
+            padding: 6px 10px;
             border: 2px solid var(--border);
             border-radius: 8px;
-            margin-left: 4px;
             font-size: 0.82rem;
+            background: #fff;
+            outline: none;
+        }
+        .filter-input {
+            width: 70px;
+            text-align: center;
         }
 
-        /* Сетка услуг */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 16px;
         }
         @media (max-width: 600px) {
-            .services-grid { grid-template-columns: 1fr; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .service-card {
-            background: var(--surface);
+            background: var(--card);
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 20px;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            transition: 0.2s;
             cursor: pointer;
             border-left: 5px solid transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        .service-card[data-cat="ot"] { border-left-color: var(--cat-ot); }
-        .service-card[data-cat="pb"] { border-left-color: var(--cat-pb); }
-        .service-card[data-cat="fire"] { border-left-color: var(--cat-fire); }
-        .service-card[data-cat="eco"] { border-left-color: var(--cat-eco); }
-        .service-card:hover { box-shadow: var(--shadow-hover); }
+        .service-card[data-cat="ot"] {
+            border-left-color: var(--cat-ot);
+        }
+        .service-card[data-cat="pb"] {
+            border-left-color: var(--cat-pb);
+        }
+        .service-card[data-cat="fire"] {
+            border-left-color: var(--cat-fire);
+        }
+        .service-card[data-cat="eco"] {
+            border-left-color: var(--cat-eco);
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
         .service-card .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-sm);
-            background: var(--primary-light);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--accent-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
         }
-        .service-card .category-tag { font-size: 0.7rem; font-weight: 600; }
-        .service-card h3 { font-size: 1rem; font-weight: 600; }
-        .service-card .desc { font-size: 0.8rem; color: var(--text-secondary); flex: 1; }
-        .service-card .price { font-weight: 700; }
-        .service-card .rating { color: #f9a825; font-size: 0.85rem; }
-        .service-card .actions { display: flex; gap: 6px; flex-wrap: wrap; }
-        .service-card .actions .btn { flex: 1; min-width: 90px; font-size: 0.75rem; padding: 8px; }
+        .service-card .category-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .service-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .service-card .desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+        .service-card .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        .service-card .rating {
+            font-size: 0.85rem;
+            color: #f9a825;
+        }
+        .service-card .actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .service-card .actions .btn {
+            flex: 1;
+            font-size: 0.8rem;
+            padding: 8px;
+        }
 
         /* Панель сравнения */
         .compare-panel {
             position: fixed;
-            bottom: 16px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--surface);
-            border: 2px solid var(--primary);
+            background: white;
+            border: 2px solid var(--accent);
             border-radius: 40px;
-            padding: 6px 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            padding: 8px 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             z-index: 200;
             opacity: 0;
             pointer-events: none;
-            transition: var(--transition);
+            transition: 0.2s;
         }
-        .compare-panel.visible { opacity: 1; pointer-events: auto; }
+        .compare-panel.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         /* Модальные окна */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             z-index: 300;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.25s;
+            transition: opacity 0.2s;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
         .modal {
             background: #fff;
             border-radius: var(--radius);
-            padding: 24px 20px;
-            max-width: 700px;
+            padding: 24px;
+            max-width: 800px;
             width: 95%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
             position: relative;
         }
         .modal-close {
@@ -395,58 +481,90 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-secondary);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .compare-table {
             width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 0.9rem;
-            font-family: inherit;
-            outline: none;
-            transition: var(--transition);
-            background: #fff;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 10px;
         }
-        .form-group input:focus,
-        .form-group textarea:focus { border-color: var(--primary); }
+        .compare-table th,
+        .compare-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+        .compare-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        .rating-stars {
+            color: #f9a825;
+        }
+        .price-cell {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            font-family: inherit;
+        }
         .success-toast {
             background: #e8f5e9;
             color: #2e7d32;
             padding: 14px;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             text-align: center;
             font-weight: 600;
             margin-top: 12px;
             display: none;
         }
-        .success-toast.show { display: block; animation: fadeIn 0.3s; }
+        .success-toast.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Кабинеты */
         .cabinet-layout {
             display: grid;
             grid-template-columns: 220px 1fr;
             gap: 16px;
         }
         @media (max-width: 640px) {
-            .cabinet-layout { grid-template-columns: 1fr; }
+            .cabinet-layout {
+                grid-template-columns: 1fr;
+            }
         }
         .cabinet-sidebar,
         .cabinet-content {
-            background: var(--surface);
+            background: var(--card);
             border-radius: var(--radius);
             padding: 16px;
             box-shadow: var(--shadow);
@@ -454,12 +572,13 @@
         .request-item {
             background: #fafafa;
             padding: 12px;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             margin-bottom: 8px;
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid var(--accent);
+            font-size: 0.9rem;
         }
 
-        .footer {
+        footer {
             background: #fff;
             border-top: 1px solid var(--border);
             padding: 20px;
@@ -469,50 +588,47 @@
             margin-top: auto;
         }
 
-        .hidden { display: none !important; }
-        .text-center { text-align: center; }
-        .mb-16 { margin-bottom: 16px; }
-        .mt-16 { margin-top: 16px; }
+        .hidden {
+            display: none !important;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
         .supplier-check-label {
             display: flex;
             align-items: center;
             gap: 8px;
             margin: 6px 0;
-            font-size: 0.9rem;
-        }
-        .file-fake {
-            background: #f5f5f5;
-            padding: 10px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- Шапка -->
     <header class="header">
         <div class="header-inner">
             <a href="#" class="logo" onclick="navigateTo('catalog')">
-                <div class="logo-icon">СБ</div> СБ-платформа
+                <span class="logo-icon">СБ</span> СБ-платформа
             </a>
             <button class="burger" id="burgerBtn" onclick="toggleMobileMenu()">
                 <span></span><span></span><span></span>
             </button>
-            <nav class="header-nav" id="desktopNav">
+            <nav class="desktop-nav" id="desktopNav">
                 <a href="#" onclick="navigateTo('catalog')" class="active" data-page="catalog">Каталог</a>
                 <a href="#" onclick="navigateTo('about')" data-page="about">О платформе</a>
                 <a href="#" onclick="navigateTo('contacts')" data-page="contacts">Контакты</a>
-                <a href="#" onclick="navigateTo('faq')" data-page="faq">FAQ</a>
                 <span id="authBlock">
                     <button class="btn btn-outline btn-sm" onclick="loginAs('customer')">👤 Заказчик</button>
                     <button class="btn btn-primary btn-sm" onclick="loginAs('supplier')">🚀 Поставщик</button>
                 </span>
-                <span id="userBlock" class="hidden" style="display:flex; align-items:center; gap:8px;">
+                <span id="userBlock" class="hidden" style="display:flex; align-items:center; gap:6px;">
                     <span id="userNameDisplay" style="font-weight:600;"></span>
                     <button class="btn btn-outline btn-sm" onclick="logout()">Выйти</button>
-                    <span id="compareBadge" class="badge hidden" style="cursor:pointer;" onclick="openCompareModal()">0</span>
+                    <span id="compareBadge" class="badge hidden" onclick="openCompareModal()">0</span>
                 </span>
             </nav>
         </div>
@@ -520,13 +636,12 @@
             <a href="#" onclick="navigateTo('catalog'); closeMobileMenu();">Каталог</a>
             <a href="#" onclick="navigateTo('about'); closeMobileMenu();">О платформе</a>
             <a href="#" onclick="navigateTo('contacts'); closeMobileMenu();">Контакты</a>
-            <a href="#" onclick="navigateTo('faq'); closeMobileMenu();">FAQ</a>
             <span id="authBlockMobile">
                 <button class="btn btn-outline btn-sm" onclick="loginAs('customer'); closeMobileMenu();">👤 Заказчик</button>
                 <button class="btn btn-primary btn-sm" onclick="loginAs('supplier'); closeMobileMenu();">🚀 Поставщик</button>
             </span>
             <span id="userBlockMobile" class="hidden">
-                <span id="userNameDisplayMobile" style="font-weight:600;"></span>
+                <span id="userNameDisplayMobile"></span>
                 <button class="btn btn-outline btn-sm" onclick="logout(); closeMobileMenu();">Выйти</button>
             </span>
         </div>
@@ -535,52 +650,60 @@
     <main class="main">
         <!-- Каталог -->
         <div id="page-catalog" class="page active">
-            <div class="monitor" id="monitorBlock">
-                <div class="monitor-card"><span class="num" id="monSuppliers">15</span><span class="label">поставщиков</span></div>
-                <div class="monitor-card"><span class="num" id="monRequests">127</span><span class="label">запросов КП сегодня</span></div>
-                <div class="monitor-card"><span class="num" id="monUsers">348</span><span class="label">пользователей</span></div>
-                <div class="monitor-card"><span class="num" id="monDeals">89</span><span class="label">договоров</span></div>
+            <div class="monitor-grid" id="monitorBlock">
+                <div class="monitor-card"><span class="num" id="monSuppliers">12</span><span class="label">поставщиков</span></div>
+                <div class="monitor-card"><span class="num" id="monRequests">43</span><span class="label">запросов КП сегодня</span></div>
+                <div class="monitor-card"><span class="num" id="monUsers">215</span><span class="label">пользователей</span></div>
             </div>
             <div class="hero">
-                <h1>🔍 Найдите услуги по безопасности бизнеса</h1>
-                <p>Охрана труда · Промышленная безопасность · Пожарная безопасность · Экология</p>
+                <h1>Выбери услуги в сфере охраны труда и безопасности</h1>
+                <p>Охрана труда · Промбезопасность · Пожарная безопасность · Экология</p>
                 <div class="search-row">
-                    <input type="text" id="searchInput" placeholder="Поиск услуги..." oninput="renderServices()">
+                    <input type="text" id="searchInput" placeholder="Название услуги или ключевые слова..." oninput="renderServices()">
                     <button class="btn btn-primary" onclick="renderServices()">Найти</button>
                 </div>
             </div>
-            <div class="filters" id="filterContainer">
+            <div class="filters">
                 <span style="font-weight:600;">Категория:</span>
                 <span class="filter-chip active" data-cat="all" onclick="setCategoryFilter('all', this)">Все</span>
-                <span class="filter-chip" data-cat="ot" onclick="setCategoryFilter('ot', this)">🛡️ Охрана труда</span>
-                <span class="filter-chip" data-cat="pb" onclick="setCategoryFilter('pb', this)">⚙️ Промбезопасность</span>
-                <span class="filter-chip" data-cat="fire" onclick="setCategoryFilter('fire', this)">🔥 Пожарная</span>
-                <span class="filter-chip" data-cat="eco" onclick="setCategoryFilter('eco', this)">🌿 Экология</span>
-                <span class="filter-price">Цена от <input type="number" id="priceMin" placeholder="0" onchange="renderServices()"> до <input type="number" id="priceMax" placeholder="500000" onchange="renderServices()"> ₽</span>
+                <span class="filter-chip" data-cat="ot" onclick="setCategoryFilter('ot', this)">Охрана труда</span>
+                <span class="filter-chip" data-cat="pb" onclick="setCategoryFilter('pb', this)">Промбезопасность</span>
+                <span class="filter-chip" data-cat="fire" onclick="setCategoryFilter('fire', this)">Пожарная</span>
+                <span class="filter-chip" data-cat="eco" onclick="setCategoryFilter('eco', this)">Экология</span>
+                <select class="filter-select" id="regionFilter" onchange="renderServices()">
+                    <option value="all">Все регионы</option>
+                </select>
+                <label>Рейтинг от <select class="filter-select" id="ratingMin" onchange="renderServices()">
+                    <option value="0">Любой</option><option value="4.0">4.0</option><option value="4.5">4.5</option></select></label>
+                <label>Поставщиков от <input type="number" class="filter-input" id="suppMin" value="0" min="0" onchange="renderServices()"></label>
+                <span>Цена от <input type="number" class="filter-input" id="priceMin" placeholder="0" onchange="renderServices()"> до <input type="number" class="filter-input" id="priceMax" placeholder="500000" onchange="renderServices()"> ₽</span>
             </div>
             <div class="services-grid" id="servicesGrid"></div>
-            <p id="noResults" class="text-center hidden">😕 Ничего не найдено.</p>
+            <p id="noResults" class="text-center hidden">😕 По вашему запросу ничего не найдено. Попробуйте изменить фильтры.</p>
         </div>
 
         <!-- Детальная услуга -->
         <div id="page-service-detail" class="page"></div>
 
-        <!-- Кабинет заказчика -->
+        <!-- Кабинеты -->
         <div id="page-customer-cabinet" class="page"></div>
-
-        <!-- Кабинет поставщика -->
         <div id="page-supplier-cabinet" class="page"></div>
 
-        <!-- Остальные страницы -->
-        <div id="page-about" class="page"><h2>О платформе</h2><p>СБ-платформа объединяет поставщиков услуг...</p></div>
-        <div id="page-contacts" class="page"><h2>Контакты</h2><p>info@sb-platform.demo</p></div>
-        <div id="page-faq" class="page"><h2>FAQ</h2><p>Часто задаваемые вопросы...</p></div>
+        <!-- Статические страницы -->
+        <div id="page-about" class="page">
+            <h2>О платформе</h2>
+            <p>«СБ» — агрегатор услуг в сфере охраны труда, промышленной, пожарной и экологической безопасности. Платформа помогает быстро найти подходящих поставщиков, сравнить их предложения и запросить коммерческое предложение.</p>
+            <h3 class="mt-16">Условия доступа для поставщиков</h3>
+            <p>Регистрация на платформе <strong>бесплатная</strong>. Для размещения услуг необходима авторизация от имени юридического лица или индивидуального предпринимателя. После верификации вы получаете личный кабинет с аналитикой запросов и возможностью управлять своими предложениями.</p>
+            <p class="mt-16">Все данные на сайте демонстрационные и не являются публичной офертой.</p>
+        </div>
+        <div id="page-contacts" class="page"><h2>Контакты</h2><p>📧 info@sb-platform.demo<br>📞 8 800 123-45-67 (демо)</p></div>
     </main>
 
-    <!-- Плавающая панель сравнения -->
+    <!-- Панель сравнения -->
     <div class="compare-panel" id="comparePanel">
-        <span class="count" id="compareCount">0</span>
-        <button class="btn btn-primary btn-sm" onclick="openCompareModal()">Сравнить</button>
+        <span id="compareCount">0 услуг</span>
+        <button class="btn btn-primary btn-sm" onclick="openCompareModal()">📊 Сравнить</button>
         <button class="btn btn-outline btn-sm" onclick="clearCompare()">✕</button>
     </div>
 
@@ -588,89 +711,126 @@
     <div class="modal-overlay" id="compareModalOverlay">
         <div class="modal">
             <button class="modal-close" onclick="closeCompareModal()">✕</button>
-            <h2>📊 Сравнение</h2><div id="compareTableContainer"></div>
+            <h2>📊 Сравнение поставщиков</h2>
+            <div id="compareTableContainer"></div>
         </div>
     </div>
 
-    <footer class="footer">
-        <p>© 2026 СБ-платформа (демо). Все данные вымышлены.</p>
+    <!-- Модалка "Требуется авторизация" -->
+    <div class="modal-overlay" id="authModalOverlay">
+        <div class="modal" style="max-width:400px; text-align:center;">
+            <button class="modal-close" onclick="closeAuthModal()">✕</button>
+            <h3>🚀 Авторизуйтесь</h3>
+            <p>Для выполнения этого действия необходимо войти как <strong>заказчик</strong>.</p>
+            <button class="btn btn-primary" onclick="loginAs('customer'); closeAuthModal();">Войти как заказчик</button>
+            <button class="btn btn-outline mt-16" onclick="closeAuthModal()">Отмена</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 СБ-платформа (демонстрационная версия). Все компании и контакты вымышлены.</p>
     </footer>
 
     <script>
         (function() {
-            // Данные (те же, что и раньше, но с добавлением автоматизации)
+            // ---- ДАННЫЕ ----
             const categories = {
-                ot: { id:'ot', name:'Охрана труда', icon:'🛡️', color:'#1565c0' },
-                pb: { id:'pb', name:'Промышленная безопасность', icon:'⚙️', color:'#37474f' },
-                fire: { id:'fire', name:'Пожарная безопасность', icon:'🔥', color:'#c62828' },
-                eco: { id:'eco', name:'Экологическая безопасность', icon:'🌿', color:'#2e7d32' }
+                ot: { id: 'ot', name: 'Охрана труда', icon: '🛡️', color: '#1565c0' },
+                pb: { id: 'pb', name: 'Промышленная безопасность', icon: '⚙️', color: '#37474f' },
+                fire: { id: 'fire', name: 'Пожарная безопасность', icon: '🔥', color: '#c62828' },
+                eco: { id: 'eco', name: 'Экологическая безопасность', icon: '🌿', color: '#2e7d32' }
             };
 
-            const services = [
-                { id:'s1', cat:'ot', name:'Специальная оценка условий труда (СОУТ)', desc:'Проведение СОУТ по ФЗ-426.', priceMin:18000, priceMax:45000, icon:'📋', automation:false },
-                { id:'s21', cat:'ot', name:'Автоматизация процессов охраны труда', desc:'Цифровые платформы СУОТ.', priceMin:80000, priceMax:200000, icon:'🤖', automation:true },
-                { id:'s6', cat:'pb', name:'Аудит промышленной безопасности', desc:'Экспертиза ОПО.', priceMin:30000, priceMax:90000, icon:'⚙️', automation:false },
-                { id:'s22', cat:'pb', name:'Автоматизация экспертизы промбезопасности', desc:'ПО для анализа рисков.', priceMin:90000, priceMax:250000, icon:'💻', automation:true },
-                { id:'s11', cat:'fire', name:'Аудит пожарной безопасности', desc:'Независимая оценка риска.', priceMin:20000, priceMax:65000, icon:'🔥', automation:false },
-                { id:'s23', cat:'fire', name:'Автоматизация систем пожарного мониторинга', desc:'Диспетчеризация сигналов.', priceMin:70000, priceMax:180000, icon:'📡', automation:true },
-                { id:'s16', cat:'eco', name:'Экологический аудит', desc:'Проверка соблюдения ФЗ-7.', priceMin:35000, priceMax:100000, icon:'🌿', automation:false },
-                { id:'s24', cat:'eco', name:'Автоматизация экологического мониторинга', desc:'Датчики и аналитика.', priceMin:100000, priceMax:300000, icon:'🌐', automation:true }
+            const popularServices = [
+                { id: 's1', cat: 'ot', name: 'Специальная оценка условий труда (СОУТ)', desc: 'Проведение СОУТ по ФЗ-426, подготовка отчёта.', priceMin: 18000, priceMax: 45000,
+                    icon: '📋' },
+                { id: 's2', cat: 'ot', name: 'Обучение и проверка знаний по охране труда', desc: 'Дистанционное обучение с выдачей удостоверений.', priceMin: 2000, priceMax: 8000,
+                    icon: '🎓' },
+                { id: 's3', cat: 'pb', name: 'Аудит промышленной безопасности', desc: 'Экспертиза ОПО, технических устройств.', priceMin: 30000, priceMax: 90000, icon: '⚙️' },
+                { id: 's4', cat: 'fire', name: 'Аудит пожарной безопасности', desc: 'Независимая оценка пожарного риска.', priceMin: 20000, priceMax: 65000, icon: '🔥' },
+                { id: 's5', cat: 'eco', name: 'Экологический аудит', desc: 'Проверка соблюдения природоохранного законодательства.', priceMin: 35000, priceMax: 100000,
+                    icon: '🌿' },
+                { id: 's6', cat: 'ot', name: 'Разработка инструкций по охране труда', desc: 'Актуализация инструкций согласно ТК РФ.', priceMin: 5000, priceMax: 15000, icon: '📝' },
+                { id: 's7', cat: 'pb', name: 'Декларация промышленной безопасности', desc: 'Подготовка и сопровождение документа.', priceMin: 50000, priceMax: 150000, icon: '📄' },
+                { id: 's8', cat: 'fire', name: 'Монтаж и обслуживание АПС', desc: 'Проектирование, монтаж пожарной сигнализации.', priceMin: 35000, priceMax: 200000,
+                icon: '🔔' },
+                { id: 's9', cat: 'eco', name: 'Разработка паспортов отходов', desc: 'Паспортизация опасных отходов, согласование.', priceMin: 5000, priceMax: 18000, icon: '🗑️' },
+                { id: 's10', cat: 'ot', name: 'Автоматизация процессов охраны труда', desc: 'Цифровые платформы, электронные наряды-допуски.', priceMin: 80000,
+                    priceMax: 200000, icon: '🤖' }
             ];
 
             const suppliers = [
-                { id:'sup1', name:'ПромЭксперт', rating:4.8, city:'Москва', specialization:['ot','pb'] },
-                { id:'sup2', name:'ЭкоТехСервис', rating:4.6, city:'СПб', specialization:['eco'] },
-                { id:'sup3', name:'ОхранаТрудГарант', rating:4.9, city:'Казань', specialization:['ot'] },
-                { id:'sup5', name:'ПожАудитПро', rating:4.7, city:'Новосибирск', specialization:['fire'] },
-                { id:'sup7', name:'ПромБезопасность', rating:4.8, city:'Уфа', specialization:['pb'] },
-                { id:'sup9', name:'ЭкоСтандарт', rating:4.6, city:'Ростов', specialization:['eco'] },
-                { id:'sup14', name:'АудитБезопасности', rating:4.9, city:'Москва', specialization:['ot','pb','fire','eco'] },
-                { id:'sup16', name:'ЦифраБезопасность', rating:4.7, city:'Москва', specialization:['ot','pb','fire','eco'] }
+                { id: 'sup1', name: 'ПромЭксперт', rating: 4.8, city: 'Москва', specialization: ['ot', 'pb'] },
+                { id: 'sup2', name: 'ЭкоТехСервис', rating: 4.6, city: 'Санкт-Петербург', specialization: ['eco'] },
+                { id: 'sup3', name: 'ОхранаТрудГарант', rating: 4.9, city: 'Казань', specialization: ['ot'] },
+                { id: 'sup4', name: 'ПожАудитПро', rating: 4.7, city: 'Новосибирск', specialization: ['fire'] },
+                { id: 'sup5', name: 'ПромБезопасность', rating: 4.8, city: 'Уфа', specialization: ['pb'] },
+                { id: 'sup6', name: 'ЭкоСтандарт', rating: 4.6, city: 'Ростов-на-Дону', specialization: ['eco'] },
+                { id: 'sup7', name: 'АудитБезопасности', rating: 4.9, city: 'Москва', specialization: ['ot', 'pb', 'fire',
+                    'eco'] },
+                { id: 'sup8', name: 'ЦифраБезопасность', rating: 4.7, city: 'Москва', specialization: ['ot', 'pb', 'fire',
+                    'eco'] },
+                { id: 'sup9', name: 'Техносфера', rating: 4.7, city: 'Нижний Новгород', specialization: ['pb', 'ot'] },
+                { id: 'sup10', name: 'Автоматика-Сервис', rating: 4.5, city: 'Тюмень', specialization: ['pb', 'fire'] },
+                { id: 'sup11', name: 'ЭкоЛаб', rating: 4.3, city: 'Казань', specialization: ['eco'] },
+                { id: 'sup12', name: 'СмартПром', rating: 4.8, city: 'Новосибирск', specialization: ['pb', 'eco'] }
             ];
 
             const serviceSuppliers = {};
-            services.forEach(s => {
-                const relevant = suppliers.filter(sup => sup.specialization.includes(s.cat) || s.automation);
-                serviceSuppliers[s.id] = relevant.slice(0, 4).map(sup => ({
+            popularServices.forEach(s => {
+                const relevant = suppliers.filter(sup => sup.specialization.includes(s.cat));
+                serviceSuppliers[s.id] = relevant.slice(0, 4 + Math.floor(Math.random() * 3)).map(sup => ({
                     supplierId: sup.id,
-                    price: Math.floor(s.priceMin + Math.random()*(s.priceMax - s.priceMin)),
-                    days: Math.floor(7 + Math.random()*40)
+                    price: Math.floor(s.priceMin + Math.random() * (s.priceMax - s.priceMin)),
+                    days: Math.floor(7 + Math.random() * 60)
                 }));
             });
 
             let kpRequests = [
-                { id:'r1', userId:'cust1', serviceId:'s1', supplierIds:['sup1','sup3'], date:'2026-04-28', status:'Новый', task:'Оценка офиса 200м2', file:false },
-                { id:'r2', userId:'cust1', serviceId:'s11', supplierIds:['sup5'], date:'2026-04-27', status:'Отвечен', task:'Аудит склада', file:true }
+                { id: 'r1', userId: 'cust1', serviceId: 's1', supplierIds: ['sup1', 'sup3'], date: '2026-04-28',
+                    status: 'Новый', task: 'Офис 200 м²' },
+                { id: 'r2', userId: 'cust1', serviceId: 's4', supplierIds: ['sup4'], date: '2026-04-27', status: 'Отвечен',
+                    task: 'Склад' }
             ];
 
             let currentUser = null;
             let compareList = [];
             let categoryFilter = 'all';
+            let regionFilter = 'all';
 
-            // Навигация
+            const uniqueCities = [...new Set(suppliers.map(s => s.city))].sort();
+
+            // ---- НАВИГАЦИЯ ----
             function navigateTo(page, params) {
                 document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-                const target = document.getElementById('page-'+page);
+                const target = document.getElementById('page-' + page);
                 if (target) target.classList.add('active');
-                document.querySelectorAll('.header-nav a[data-page]').forEach(a => a.classList.remove('active'));
-                const navLink = document.querySelector(`.header-nav a[data-page="${page}"]`);
+                document.querySelectorAll('.desktop-nav a[data-page]').forEach(a => a.classList.remove('active'));
+                const navLink = document.querySelector(`.desktop-nav a[data-page="${page}"]`);
                 if (navLink) navLink.classList.add('active');
                 if (page === 'catalog') renderServices();
                 if (page === 'service-detail') renderServiceDetail(params?.serviceId);
                 if (page === 'customer-cabinet') renderCustomerCabinet();
                 if (page === 'supplier-cabinet') renderSupplierCabinet();
                 updateComparePanel();
-                window.scrollTo({top:0, behavior:'smooth'});
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             window.navigateTo = navigateTo;
 
+            // Авторизация
             function loginAs(role) {
-                if (role === 'customer') currentUser = { role:'customer', name:'Иван Иванов', id:'cust1' };
-                else currentUser = { role:'supplier', name:'ПромЭксперт', id:'sup1' };
+                currentUser = role === 'customer' ? { role: 'customer', name: 'Иван Иванов', id: 'cust1' } : { role: 'supplier',
+                    name: 'ПромЭксперт', id: 'sup1' };
                 updateAuthUI();
                 navigateTo(role === 'customer' ? 'customer-cabinet' : 'supplier-cabinet');
+                closeAuthModal();
             }
-            function logout() { currentUser = null; updateAuthUI(); navigateTo('catalog'); }
+
+            function logout() {
+                currentUser = null;
+                updateAuthUI();
+                navigateTo('catalog');
+            }
             window.loginAs = loginAs;
             window.logout = logout;
 
@@ -679,15 +839,15 @@
                 const userBlock = document.getElementById('userBlock');
                 const authMobile = document.getElementById('authBlockMobile');
                 const userMobile = document.getElementById('userBlockMobile');
-                const nameDisplay = document.getElementById('userNameDisplay');
-                const nameMobile = document.getElementById('userNameDisplayMobile');
+                const nameDisp = document.getElementById('userNameDisplay');
+                const nameDispMob = document.getElementById('userNameDisplayMobile');
                 if (currentUser) {
                     authBlock.classList.add('hidden');
                     userBlock.classList.remove('hidden');
                     authMobile.classList.add('hidden');
                     userMobile.classList.remove('hidden');
-                    nameDisplay.textContent = currentUser.name;
-                    nameMobile.textContent = currentUser.name;
+                    nameDisp.textContent = currentUser.name;
+                    nameDispMob.textContent = currentUser.name;
                 } else {
                     authBlock.classList.remove('hidden');
                     userBlock.classList.add('hidden');
@@ -700,7 +860,7 @@
             function updateCompareBadge() {
                 const badge = document.getElementById('compareBadge');
                 badge.textContent = compareList.length;
-                badge.classList.toggle('hidden', !(compareList.length && currentUser?.role==='customer'));
+                badge.classList.toggle('hidden', !(compareList.length && currentUser?.role === 'customer'));
             }
 
             // Мобильное меню
@@ -708,6 +868,7 @@
                 document.getElementById('mobileNav').classList.toggle('active');
                 document.getElementById('burgerBtn').classList.toggle('active');
             }
+
             function closeMobileMenu() {
                 document.getElementById('mobileNav').classList.remove('active');
                 document.getElementById('burgerBtn').classList.remove('active');
@@ -715,38 +876,85 @@
             window.toggleMobileMenu = toggleMobileMenu;
             window.closeMobileMenu = closeMobileMenu;
 
-            // Рендер каталога
+            // Регионы
+            function populateRegionFilter() {
+                const sel = document.getElementById('regionFilter');
+                sel.innerHTML = '<option value="all">Все регионы</option>';
+                uniqueCities.forEach(city => sel.innerHTML += `<option value="${city}">${city}</option>`);
+            }
+
+            // Проверка авторизации перед действием
+            function requireCustomerAuth(action) {
+                if (!currentUser || currentUser.role !== 'customer') {
+                    document.getElementById('authModalOverlay').classList.add('active');
+                    return false;
+                }
+                return true;
+            }
+
+            function closeAuthModal() {
+                document.getElementById('authModalOverlay').classList.remove('active');
+            }
+            window.closeAuthModal = closeAuthModal;
+
+            // Рендер каталога с расширенными фильтрами
             function renderServices() {
                 const grid = document.getElementById('servicesGrid');
                 const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
                 const pMin = parseInt(document.getElementById('priceMin')?.value) || 0;
                 const pMax = parseInt(document.getElementById('priceMax')?.value) || Number.MAX_SAFE_INTEGER;
-                let filtered = services.filter(s => {
-                    if (categoryFilter!=='all' && s.cat!==categoryFilter) return false;
-                    if (q && !s.name.toLowerCase().includes(q) && !s.desc.toLowerCase().includes(q)) return false;
+                const ratingMin = parseFloat(document.getElementById('ratingMin')?.value) || 0;
+                const suppMin = parseInt(document.getElementById('suppMin')?.value) || 0;
+                regionFilter = document.getElementById('regionFilter')?.value || 'all';
+
+                let filtered = popularServices.filter(s => {
+                    if (categoryFilter !== 'all' && s.cat !== categoryFilter) return false;
+                    if (q && !s.name.toLowerCase().includes(q) && !s.desc.toLowerCase().includes(q))
+                return false;
                     if (s.priceMin > pMax || s.priceMax < pMin) return false;
+                    const sps = serviceSuppliers[s.id] || [];
+                    if (sps.length < suppMin) return false;
+                    const avgRating = sps.reduce((a, x) => {
+                        const sup = suppliers.find(su => su.id === x.supplierId);
+                        return a + (sup ? sup.rating : 4);
+                    }, 0) / (sps.length || 1);
+                    if (avgRating < ratingMin) return false;
+                    if (regionFilter !== 'all') {
+                        const hasCity = sps.some(sp => {
+                            const sup = suppliers.find(su => su.id === sp.supplierId);
+                            return sup && sup.city === regionFilter;
+                        });
+                        if (!hasCity) return false;
+                    }
                     return true;
                 });
+
                 const noRes = document.getElementById('noResults');
-                if (filtered.length===0) { grid.innerHTML=''; noRes.classList.remove('hidden'); }
-                else {
+                if (filtered.length === 0) {
+                    grid.innerHTML = '';
+                    noRes.classList.remove('hidden');
+                } else {
                     noRes.classList.add('hidden');
                     grid.innerHTML = filtered.map(s => {
                         const cat = categories[s.cat];
                         const sps = serviceSuppliers[s.id] || [];
-                        const minPrice = sps.length ? Math.min(...sps.map(x=>x.price)) : s.priceMin;
+                        const minPrice = sps.length ? Math.min(...sps.map(x => x.price)) : s.priceMin;
+                        const avgRating = (sps.reduce((a, x) => {
+                            const sup = suppliers.find(su => su.id === x.supplierId);
+                            return a + (sup ? sup.rating : 4);
+                        }, 0) / (sps.length || 1)).toFixed(1);
                         const isComp = compareList.includes(s.id);
                         return `
                         <div class="service-card" data-cat="${s.cat}" onclick="navigateTo('service-detail', {serviceId:'${s.id}'})">
                             <span class="category-tag" style="color:${cat.color}">${cat.icon} ${cat.name}</span>
                             <div class="icon">${s.icon}</div>
                             <h3>${s.name}</h3>
-                            <p class="desc">${s.desc.substring(0,70)}...</p>
-                            <div class="price">от ${minPrice.toLocaleString()} ₽</div>
-                            <div class="rating">⭐ ${(sps.reduce((a,x)=>{ const sup=suppliers.find(su=>su.id===x.supplierId); return a+(sup?sup.rating:4); },0)/sps.length).toFixed(1)} · ${sps.length} поставщиков</div>
+                            <p class="desc">${s.desc}</p>
+                            <div class="price">от ${minPrice.toLocaleString('ru-RU')} ₽</div>
+                            <div class="rating">⭐ ${avgRating} · ${sps.length} поставщиков</div>
                             <div class="actions" onclick="event.stopPropagation()">
-                                <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); toggleCompare('${s.id}', ${!isComp})">${isComp?'✅ В сравнении':'📊 Сравнить'}</button>
-                                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); navigateTo('service-detail', {serviceId:'${s.id}'})">📩 КП</button>
+                                <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); handleCompareClick('${s.id}', ${!isComp})">${isComp ? '✅ В сравнении' : '📊 Сравнить'}</button>
+                                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); handleKpClick('${s.id}')">📩 КП</button>
                             </div>
                         </div>`;
                     }).join('');
@@ -756,104 +964,31 @@
 
             function setCategoryFilter(cat, el) {
                 categoryFilter = cat;
-                document.querySelectorAll('#filterContainer .filter-chip').forEach(c => c.classList.remove('active'));
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
                 if (el) el.classList.add('active');
                 renderServices();
             }
             window.setCategoryFilter = setCategoryFilter;
-            window.renderServices = renderServices;
 
-            function renderServiceDetail(serviceId) {
-                const page = document.getElementById('page-service-detail');
-                const srv = services.find(s=>s.id===serviceId);
-                if (!srv) { page.innerHTML='<p>Услуга не найдена.</p>'; return; }
-                const sps = serviceSuppliers[serviceId] || [];
-                page.innerHTML = `
-                <div style="background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
-                    <button class="btn btn-outline btn-sm mb-16" onclick="navigateTo('catalog')">← Назад</button>
-                    <h2>${srv.icon} ${srv.name}</h2><p>${srv.desc}</p>
-                    <h3 class="mt-16">Выберите поставщиков</h3>
-                    <div style="max-height:280px; overflow-y:auto; margin:10px 0;">
-                        ${sps.map(sp => {
-                            const sup = suppliers.find(s=>s.id===sp.supplierId);
-                            return `<label class="supplier-check-label">
-                                <input type="checkbox" value="${sup.id}" class="sup-check"> ${sup.name} (${sup.city}) — ${sp.price.toLocaleString()} ₽, ${sp.days} дн. ⭐${sup.rating}
-                            </label>`;
-                        }).join('')}
-                    </div>
-                    <h3>Техническое задание</h3>
-                    <form id="detailKpForm" onsubmit="submitDetailKp(event, '${serviceId}')">
-                        <div class="form-group"><label>Количество / объект</label><input type="text" id="tkCount" placeholder="50 человек, 3 цеха"></div>
-                        <div class="form-group"><label>Характеристики</label><input type="text" id="tkArea" placeholder="Площадь, категория"></div>
-                        <div class="form-group"><label>Описание задачи *</label><textarea id="tkDesc" rows="3" required></textarea></div>
-                        <div class="form-group"><label>Прикрепить файл ТЗ</label>
-                            <div class="file-fake"><input type="file" id="tkFile" style="display:none;" onchange="document.getElementById('fakeFileName').textContent=this.files[0]?.name||'файл не выбран'"><button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('tkFile').click()">📎 Выбрать</button><span id="fakeFileName">файл не выбран</span></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">📤 Отправить запрос</button>
-                    </form>
-                    <div class="success-toast" id="detailKpToast">✅ Запрос направлен! (демо)</div>
-                </div>`;
+            // Обработчики с проверкой авторизации
+            function handleCompareClick(serviceId, add) {
+                if (!requireCustomerAuth()) return;
+                toggleCompare(serviceId, add);
             }
 
-            window.submitDetailKp = function(event, serviceId) {
-                event.preventDefault();
-                const checks = document.querySelectorAll('#supplierCheckboxes input:checked, .sup-check:checked');
-                if (checks.length===0) return alert('Выберите поставщика');
-                kpRequests.push({
-                    id:'r'+Date.now(), userId: currentUser?.id || 'guest', serviceId,
-                    supplierIds: Array.from(checks).map(c=>c.value),
-                    date: new Date().toISOString().slice(0,10), status:'Новый',
-                    task: document.getElementById('tkDesc')?.value,
-                    file: document.getElementById('tkFile')?.files[0]?.name || false
-                });
-                document.getElementById('detailKpToast').classList.add('show');
-                setTimeout(() => { document.getElementById('detailKpToast').classList.remove('show'); navigateTo('catalog'); }, 1500);
-            };
-
-            function renderCustomerCabinet() {
-                const page = document.getElementById('page-customer-cabinet');
-                if (!currentUser || currentUser.role!=='customer') { page.innerHTML='<p>Доступ запрещён.</p>'; return; }
-                const userReqs = kpRequests.filter(r=>r.userId===currentUser.id);
-                page.innerHTML = `
-                <div class="cabinet-layout">
-                    <div class="cabinet-sidebar"><h3>👤 ${currentUser.name}</h3><p>Запросов: ${userReqs.length}</p></div>
-                    <div class="cabinet-content"><h3>Мои запросы КП</h3>
-                        ${userReqs.map(r => {
-                            const srv = services.find(s=>s.id===r.serviceId);
-                            return `<div class="request-item"><strong>${srv?.name}</strong><br>Поставщики: ${r.supplierIds.map(sid=>suppliers.find(s=>s.id===sid)?.name).join(', ')}<br>Дата: ${r.date} · Статус: ${r.status}</div>`;
-                        }).join('') || '<p>Нет запросов</p>'}
-                    </div>
-                </div>`;
+            function handleKpClick(serviceId) {
+                if (!requireCustomerAuth()) return;
+                navigateTo('service-detail', { serviceId });
             }
-
-            function renderSupplierCabinet() {
-                const page = document.getElementById('page-supplier-cabinet');
-                if (!currentUser || currentUser.role!=='supplier') { page.innerHTML='<p>Доступ запрещён.</p>'; return; }
-                const myId = currentUser.id;
-                const requestsToMe = kpRequests.filter(r=>r.supplierIds.includes(myId));
-                page.innerHTML = `
-                <div class="cabinet-layout">
-                    <div class="cabinet-sidebar"><h3>🚀 ${currentUser.name}</h3><p>Запросов: ${requestsToMe.length}</p></div>
-                    <div class="cabinet-content"><h3>Входящие запросы</h3>
-                        ${requestsToMe.map(r => {
-                            const srv = services.find(s=>s.id===r.serviceId);
-                            return `<div class="request-item"><strong>${srv?.name}</strong><br>Заказчик: ${r.userId==='cust1'?'Иван Иванов':'Гость'}<br>Дата: ${r.date} · Статус: ${r.status}<br><button class="btn btn-outline btn-sm mt-8" onclick="changeRequestStatus('${r.id}')">Отметить отвеченным</button></div>`;
-                        }).join('') || '<p>Нет запросов</p>'}
-                    </div>
-                </div>`;
-            }
-            window.changeRequestStatus = function(reqId) {
-                const req = kpRequests.find(r=>r.id===reqId);
-                if (req) req.status = 'Отвечен';
-                navigateTo(currentUser.role==='supplier' ? 'supplier-cabinet' : 'customer-cabinet');
-            };
+            window.handleCompareClick = handleCompareClick;
+            window.handleKpClick = handleKpClick;
 
             // Сравнение
             function toggleCompare(serviceId, add) {
                 if (add) {
-                    if (compareList.length>=3) { alert('Максимум 3 услуги'); return; }
+                    if (compareList.length >= 3) { alert('Можно сравнить не более 3 услуг'); return; }
                     if (!compareList.includes(serviceId)) compareList.push(serviceId);
-                } else compareList = compareList.filter(id=>id!==serviceId);
+                } else compareList = compareList.filter(id => id !== serviceId);
                 updateComparePanel();
                 renderServices();
             }
@@ -861,48 +996,197 @@
 
             function updateComparePanel() {
                 const panel = document.getElementById('comparePanel');
-                if (compareList.length && currentUser?.role==='customer') {
+                if (compareList.length && currentUser?.role === 'customer') {
                     panel.classList.add('visible');
                     document.getElementById('compareCount').textContent = compareList.length + ' услуги';
                 } else panel.classList.remove('visible');
                 updateCompareBadge();
             }
-            function clearCompare() { compareList=[]; updateComparePanel(); renderServices(); closeCompareModal(); }
+
+            function clearCompare() {
+                compareList = [];
+                updateComparePanel();
+                renderServices();
+                closeCompareModal();
+            }
             window.clearCompare = clearCompare;
 
             function openCompareModal() {
                 if (!compareList.length) return;
-                const overlay = document.getElementById('compareModalOverlay');
-                overlay.classList.add('active');
+                document.getElementById('compareModalOverlay').classList.add('active');
                 const cont = document.getElementById('compareTableContainer');
-                const sels = services.filter(s=>compareList.includes(s.id));
-                let html = '<table style="width:100%"><tr><th>Поставщик</th>'+ sels.map(s=>`<th>${s.name.substring(0,15)}</th>`).join('') +'</tr>';
-                const allSups = new Set();
-                sels.forEach(s=> (serviceSuppliers[s.id]||[]).forEach(x=>allSups.add(x.supplierId)));
-                const supArr = Array.from(allSups).map(sid=>suppliers.find(s=>s.id===sid)).filter(Boolean);
-                supArr.forEach(sup=>{
-                    html += `<tr><td>${sup.name}<br><small>${sup.city}</small></td>`;
-                    sels.forEach(s=>{
-                        const e = (serviceSuppliers[s.id]||[]).find(x=>x.supplierId===sup.id);
-                        html += `<td>${e ? e.price.toLocaleString()+' ₽ / '+e.days+' дн.' : '—'}</td>`;
+                const selected = popularServices.filter(s => compareList.includes(s.id));
+                let html =
+                    '<table class="compare-table"><thead><tr><th>Поставщик</th><th>Город</th><th>Рейтинг</th>';
+                selected.forEach(s => html += `<th>${s.name.substring(0, 18)}</th>`);
+                html += '</tr></thead><tbody>';
+                const allSupIds = new Set();
+                selected.forEach(s => (serviceSuppliers[s.id] || []).forEach(x => allSupIds.add(x.supplierId)));
+                const supArr = Array.from(allSupIds).map(sid => suppliers.find(s => s.id === sid)).filter(Boolean);
+                supArr.forEach(sup => {
+                    html += `<tr>
+                        <td><strong>${sup.name}</strong></td>
+                        <td>${sup.city}</td>
+                        <td><span class="rating-stars">${'★'.repeat(Math.round(sup.rating))}</span> ${sup.rating}</td>`;
+                    selected.forEach(s => {
+                        const e = (serviceSuppliers[s.id] || []).find(x => x.supplierId === sup.id);
+                        html +=
+                            `<td class="price-cell">${e ? e.price.toLocaleString() + ' ₽ / ' + e.days + ' дн.' : '<span style="color:#999">—</span>'}</td>`;
                     });
                     html += '</tr>';
                 });
-                html += '</table>';
+                html += '</tbody></table>';
                 cont.innerHTML = html;
             }
             window.openCompareModal = openCompareModal;
-            function closeCompareModal() { document.getElementById('compareModalOverlay').classList.remove('active'); }
+
+            function closeCompareModal() {
+                document.getElementById('compareModalOverlay').classList.remove('active');
+            }
             window.closeCompareModal = closeCompareModal;
 
-            // Закрытие модалок по оверлею
-            document.getElementById('compareModalOverlay').addEventListener('click', function(e) { if(e.target===this) closeCompareModal(); });
+            // Детальная услуга и отправка КП
+            function renderServiceDetail(serviceId) {
+                const page = document.getElementById('page-service-detail');
+                const service = popularServices.find(s => s.id === serviceId);
+                if (!service) { page.innerHTML = '<p>Услуга не найдена.</p>'; return; }
+                const sps = serviceSuppliers[serviceId] || [];
+                page.innerHTML = `
+                <div style="background:#fff; border-radius:12px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                    <button class="btn btn-outline btn-sm mb-16" onclick="navigateTo('catalog')">← Назад</button>
+                    <h2>${service.icon} ${service.name}</h2>
+                    <p style="color:var(--text-secondary);">${service.desc}</p>
+                    <h3 class="mt-16">Поставщики (отметьте нужных)</h3>
+                    <div style="max-height:300px; overflow-y:auto; margin:10px 0;">
+                        ${sps.map(sp => {
+                            const sup = suppliers.find(s => s.id === sp.supplierId);
+                            return `<label class="supplier-check-label">
+                                <input type="checkbox" value="${sup.id}" class="sup-check">
+                                <strong>${sup.name}</strong> (${sup.city}) — ${sp.price.toLocaleString()} ₽, срок ${sp.days} дн. ⭐${sup.rating}
+                            </label>`;
+                        }).join('')}
+                    </div>
+                    <h3>Техническое задание</h3>
+                    <form onsubmit="submitKpForm(event, '${serviceId}')">
+                        <div class="form-group"><label>Количество / объект</label><input type="text" id="kpCount" placeholder="например, 50 сотрудников, 3 цеха"></div>
+                        <div class="form-group"><label>Характеристики</label><input type="text" id="kpSpec" placeholder="площадь, категория"></div>
+                        <div class="form-group"><label>Описание задачи *</label><textarea id="kpDesc" rows="3" required></textarea></div>
+                        <div class="form-group"><label>Прикрепить файл (необязательно)</label>
+                            <div style="display:flex; gap:8px; align-items:center;">
+                                <input type="file" id="kpFile" style="display:none;" onchange="document.getElementById('fakeFileName').textContent=this.files[0]?.name||'файл не выбран'">
+                                <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('kpFile').click()">📎 Выбрать</button>
+                                <span id="fakeFileName" style="font-size:0.85rem;">файл не выбран</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">📩 Отправить запрос выбранным поставщикам</button>
+                    </form>
+                    <div class="success-toast" id="detailKpToast">✅ Запрос направлен! (демо)</div>
+                </div>`;
+            }
+
+            window.submitKpForm = function(event, serviceId) {
+                event.preventDefault();
+                if (!requireCustomerAuth()) return;
+                const checks = document.querySelectorAll('.sup-check:checked');
+                if (checks.length === 0) return alert('Выберите хотя бы одного поставщика');
+                const supplierIds = Array.from(checks).map(cb => cb.value);
+                kpRequests.push({
+                    id: 'r' + Date.now(),
+                    userId: currentUser.id,
+                    serviceId,
+                    supplierIds,
+                    date: new Date().toISOString().slice(0, 10),
+                    status: 'Новый',
+                    task: document.getElementById('kpDesc')?.value || '',
+                    file: document.getElementById('kpFile')?.files[0]?.name || false
+                });
+                document.getElementById('detailKpToast').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('detailKpToast').classList.remove('show');
+                    navigateTo('catalog');
+                }, 1500);
+            };
+
+            // Кабинеты
+            function renderCustomerCabinet() {
+                const page = document.getElementById('page-customer-cabinet');
+                if (!currentUser || currentUser.role !== 'customer') { page.innerHTML =
+                    '<p>Доступ только для заказчиков.</p>'; return; }
+                const reqs = kpRequests.filter(r => r.userId === currentUser.id);
+                page.innerHTML = `
+                <div class="cabinet-layout">
+                    <div class="cabinet-sidebar">
+                        <h3>👤 ${currentUser.name}</h3>
+                        <p>Запросов: ${reqs.length}</p>
+                        <p>Новых: ${reqs.filter(r => r.status==='Новый').length}</p>
+                    </div>
+                    <div class="cabinet-content">
+                        <h3>📋 Мои запросы</h3>
+                        ${reqs.length === 0 ? '<p>Запросов пока нет.</p>' : reqs.map(r => {
+                            const srv = popularServices.find(s => s.id === r.serviceId);
+                            return `<div class="request-item">
+                                <strong>${srv?.name}</strong><br>
+                                Поставщики: ${r.supplierIds.map(sid => suppliers.find(s => s.id === sid)?.name).join(', ')}<br>
+                                Дата: ${r.date} · Статус: ${r.status}
+                            </div>`;
+                        }).join('')}
+                    </div>
+                </div>`;
+            }
+
+            function renderSupplierCabinet() {
+                const page = document.getElementById('page-supplier-cabinet');
+                if (!currentUser || currentUser.role !== 'supplier') { page.innerHTML =
+                    '<p>Доступ только для поставщиков.</p>'; return; }
+                const myId = currentUser.id;
+                const myReqs = kpRequests.filter(r => r.supplierIds.includes(myId));
+                page.innerHTML = `
+                <div class="cabinet-layout">
+                    <div class="cabinet-sidebar">
+                        <h3>🚀 ${currentUser.name}</h3>
+                        <p>Запросов: ${myReqs.length}</p>
+                    </div>
+                    <div class="cabinet-content">
+                        <h3>📩 Входящие запросы КП</h3>
+                        ${myReqs.length === 0 ? '<p>Нет новых запросов.</p>' : myReqs.map(r => {
+                            const srv = popularServices.find(s => s.id === r.serviceId);
+                            return `<div class="request-item">
+                                <strong>${srv?.name}</strong><br>
+                                Заказчик: ${r.userId === 'cust1' ? 'Иван Иванов' : 'Гость'}<br>
+                                Дата: ${r.date} · Статус: ${r.status}
+                                <br><button class="btn btn-outline btn-sm mt-8" onclick="changeReqStatus('${r.id}')">Отметить отвеченным</button>
+                            </div>`;
+                        }).join('')}
+                    </div>
+                </div>`;
+            }
+            window.changeReqStatus = function(reqId) {
+                const req = kpRequests.find(r => r.id === reqId);
+                if (req) req.status = 'Отвечен';
+                navigateTo('supplier-cabinet');
+            };
+
+            // Закрытие оверлеев
+            document.getElementById('compareModalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeCompareModal();
+            });
+            document.getElementById('authModalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeAuthModal();
+            });
 
             // Старт
-            window.addEventListener('load', ()=>{
+            window.addEventListener('load', () => {
+                populateRegionFilter();
                 renderServices();
                 updateAuthUI();
             });
+
+            // Экспорт функций для onclick
+            window.renderServices = renderServices;
+            window.setCategoryFilter = setCategoryFilter;
+            window.openCompareModal = openCompareModal;
+            window.closeCompareModal = closeCompareModal;
+            window.clearCompare = clearCompare;
         })();
     </script>
 </body>
